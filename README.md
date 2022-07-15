@@ -12,14 +12,14 @@ Supported Feature:
 - Group Chat (Firebase)
 - Chat support (Text, Image, Video)
 
-Technical detail
+Technical detail:
 
-Project Structure : MVVM
-Project language : Kotlin
-Database : Firebase Firestore Database
-Video Call tool : Jitsi Meet
-Minimum SDK Version : 23
-Compile SDK Version : 30
+-Project Structure : MVVM
+-Project language : Kotlin
+-Database : Firebase Firestore Database
+-Video Call tool : Jitsi Meet
+-Minimum SDK Version : 23
+-Compile SDK Version : 30
 
 
 Third-Party SDK:
