@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_15ssp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/fontBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/enter_mobile_number"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_20sdp" />
+
+        <TextView
+            style="@style/fontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/create_account"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_14ssp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp">
+
+            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                app:ccp_arrowSize="@dimen/_20sdp"
+                app:ccp_enablePhoneAutoFormatter="true"
+                app:ccp_hideNameCode="false"
+                app:ccp_showFlag="true"
+                app:ccp_textColor="@color/grey"
+                app:ccp_textFont="@style/fontRegular"
+                app:ccp_textSize="@dimen/_14ssp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50ssp"
+                android:layout_toEndOf="@id/ccp"
+                android:textColorHint="@color/hintcolour"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtMobileNumber"
+                    style="@style/fontRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_minus10sdp"
+                    android:background="@color/white"
+                    android:drawableRight="@drawable/ic_check_black"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:singleLine="true"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/hintcolour"
+                    android:textSize="@dimen/_16ssp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@color/purple_700"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp" />
+
+</RelativeLayout>

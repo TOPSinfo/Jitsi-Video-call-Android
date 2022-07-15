@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.app.demo">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SampleDemo">
+        <activity
+            android:name=".ui.authentication.profile.activity.EditProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.jitsiCall.activity.JitsiCallActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.splash.activity.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.authentication.login.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.authentication.profile.activity.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.authentication.verification.activity.VerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.dashboard.activity.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.chat.activity.ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.chat.activity.ImageViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Black" />
+        <activity
+            android:name=".ui.chat.activity.VideoPlayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Black" />
+        <activity
+            android:name=".ui.groupChat.createGroup.activity.SelectUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.groupChat.createGroup.activity.CreateGroupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource" />
+        </provider>
+    </application>
+
+</manifest>

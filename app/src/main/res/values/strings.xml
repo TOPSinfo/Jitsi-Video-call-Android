@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Tops Demo</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+
+    <string name="enter_mobile_number">Enter your mobile number</string>
+    <string name="create_account">Enter your mobile number to create an account or sign in </string>
+    <string name="internet_not_available">Kindly check the internet connection</string>
+
+    <string name="verify_your_mobile_number">Verify your mobile number</string>
+    <string name="resend_code">Resend Code</string>
+
+    <string name="verify">Verify</string>
+    <string name="one">1:00</string>
+    <string name="please_select_profile_picture">Please select profile picture</string>
+    <string name="please_enter_first_name">Please enter first name</string>
+    <string name="please_enter_last_name">Please enter last name</string>
+    <string name="please_enter_email_address">Please enter e-mail address</string>
+    <string name="please_enter_valid_email_address">Please enter valid e-mail address</string>
+    <string name="concat_string">%s %s</string>
+    <string name="logout">Logout</string>
+    <string name="type_message">Type message..</string>
+    <string name="no_chat_found">No chat Found</string>
+    <string name="upload_your_profile_picture">Upload your profile picture</string>
+
+    <string name="please_enter_message">Please enter message</string>
+
+    <string name="invalid_srver_url">Invalid server URL!</string>
+    <!--  <string name="server_url">https://jitsi.topsdemo.in/</string>-->
+    <string name="server_url">https://meet.jit.si</string>
+
+    <string name="new_group_call">New Group Call</string>
+    <string name="you_are_invited_in_the_group_call_do_you_want_to_join">You are invited in the group call. Do you want to join?</string>
+    <string name="cancel">Cancel</string>
+    <string name="join_now">Join Now</string>
+    <string name="user_selection_validation">Please select at least 2 user to start video call</string>
+    <string name="new_call">New Group Call</string>
+    <string name="select_option">Select Option</string>
+
+    <string name="permission_denied">If you reject permission,you can not use this service Please turn on permissions at
+        [Setting] > [Permission]
+    </string>
+
+    <string name="video_length_validation">Video should be of minimum 3 seconds</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="create_group_validation">Please select at least 2 user to create group</string>
+    <string name="number_of_participants">Participants : %d</string>
+    <string name="provide_a_group_subject_and_optional_group_icon">Provide a group subject and optional group icon</string>
+    <string name="new_group">New Group</string>
+    <string name="please_enter_group_name">Please enter group name</string>
+    <string name="add_subject">Add Subject</string>
+    <string name="enter_group_name">Enter group name</string>
+    <string name="group_detail">Group Details</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="update">Update</string>
+
+
+</resources>

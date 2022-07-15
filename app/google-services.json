@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "320168325325",
+    "project_id": "fir-social-app-dea6d",
+    "storage_bucket": "fir-social-app-dea6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320168325325:android:e855d215f97ed5abea7984",
+        "android_client_info": {
+          "package_name": "com.app.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320168325325-5giheri37kn7lkui4nlpd94ddrq1iai2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeTFqgmzOfTD3b1gc4Vz08KtLHJyGgsq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320168325325-5giheri37kn7lkui4nlpd94ddrq1iai2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
