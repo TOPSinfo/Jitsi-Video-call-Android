@@ -16,10 +16,9 @@ Technical detail:
 
 - Project Architecture - MVVM
 - Project language - Kotlin
-- Database - Firebase Firestore Database
+- Database - Firebase Firestore
 - Video Call tool - Jitsi Meet
-- Minimum SDK Version - 23
-- Compile SDK Version - 30
+- Minimum SDK Version - 23 (Android 6-Marshmallow)
 
 
 Third-Party SDK:
