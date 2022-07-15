@@ -15,10 +15,15 @@ Supported Feature:
 Technical detail:
 
 -Project Structure : MVVM
+
 -Project language : Kotlin
+
 -Database : Firebase Firestore Database
+
 -Video Call tool : Jitsi Meet
+
 -Minimum SDK Version : 23
+
 -Compile SDK Version : 30
 
 
