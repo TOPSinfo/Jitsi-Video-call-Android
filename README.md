@@ -4,9 +4,7 @@ This repository is the demonstration of Chat and Video call functionality using 
 
 ![](https://github.com/TOPSinfo/Jitsi-Video-call-Android/blob/master/media/kotlin_sample.gif)
 
-
-
-#Description
+# Description
 
 In the login screen, You can use the valid mobile number. Once the otp verification done if you are registered you will be redirect to the user and group list screen else you will be redirected to registration screen
 
