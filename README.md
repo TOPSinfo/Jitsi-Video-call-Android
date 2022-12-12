@@ -1,8 +1,8 @@
-# Jitsi-Video-call-Android
 # Kotlin - Chat and Video Call app
 This repository is the demonstration of Chat and Video call functionality using firebase and Jitsi Meet. It includes screens like Login, Registration, User and Group list, Create Group, Chat.
 
-![video](/Media/kotlin_sample.gif)
+
+![](https://github.com/TOPSinfo/Jitsi-Video-call-Android/blob/master/media/kotlin_sample.gif)
 
 #Description
 
