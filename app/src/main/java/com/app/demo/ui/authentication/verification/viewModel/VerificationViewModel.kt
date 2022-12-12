@@ -39,7 +39,7 @@ class VerificationViewModel @Inject constructor(private val userRepository: User
      * Sending code to entered mobile number
      */
     private fun initVerificationCallback() {
-
+        FirebaseAuth.getInstance().firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 // This callback will be invoked in two situations:
