@@ -7,7 +7,6 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
-
     <string name="enter_mobile_number">Enter your mobile number</string>
     <string name="create_account">Enter your mobile number to create an account or sign in </string>
     <string name="internet_not_available">Kindly check the internet connection</string>
