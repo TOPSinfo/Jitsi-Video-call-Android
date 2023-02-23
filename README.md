@@ -2,7 +2,7 @@
 This repository is the demonstration of Chat and Video call functionality using firebase and Jitsi Meet. It includes screens like Login, Registration, User and Group list, Create Group, Chat.
 
 
-![](https://github.com/TOPSinfo/Jitsi-Video-call-Android/blob/master/media/kotlin_sample.gif)
+![](https://github.com/TOPSinfo/Jitsi-Video-call-Android/blob/master/media/kotlin_sample_new.gif)
 
 # Description
 
