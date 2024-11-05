@@ -3,6 +3,7 @@ buildscript {
     ext.kotlin_version = "1.5.0"
     repositories {
         google()
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         mavenCentral()
     }
     dependencies {
@@ -18,8 +19,10 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        google()
         jcenter() // Warning: this repository is going to shut down soon
         maven {
             url "https://jitpack.io"
