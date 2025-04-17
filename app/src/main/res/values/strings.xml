@@ -30,8 +30,8 @@
     <string name="please_enter_message">Please enter message</string>
 
     <string name="invalid_srver_url">Invalid server URL!</string>
-    <!--  <string name="server_url">https://jitsi.topsdemo.in/</string>-->
-    <string name="server_url">https://meet.jit.si</string>
+      <string name="server_url">https://jitsi.topsdemo.in/</string>
+<!--    <string name="server_url">https://meet.jit.si</string>-->
 
     <string name="new_group_call">New Group Call</string>
     <string name="you_are_invited_in_the_group_call_do_you_want_to_join">You are invited in the group call. Do you want to join?</string>

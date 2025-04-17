@@ -125,7 +125,7 @@ class ProfileActivity : BaseActivity() {
                         .showFolderView(true)
                         .enableSelectAll(false)
                         .enableImagePicker(true)
-                        .setCameraPlaceholder(R.drawable.ic_camera)
+                        .setCameraPlaceholder(R.drawable.ic_camera_profile)
                         .withOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
                         .pickPhoto(this@ProfileActivity, 100)
                 }

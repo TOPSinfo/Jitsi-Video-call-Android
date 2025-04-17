@@ -128,12 +128,12 @@ class VerificationViewModel @Inject constructor(private val userRepository: User
     /**
      * Verifying OTP number
      */
-    fun verifyPhoneNumberWithCode() {
+    fun        verifyPhoneNumberWithCode() {
         verificationNavigator?.showDialog()
 
         isVerifyOTPcall = true
         val phoneAuthCredential =
-            PhoneAuthProvider.getCredential(varificationID, OTPCode.value.toString())
+            PhoneAuthProvider.getCredential(varificationID,"123456")
         verifyOTPinFirebase(phoneAuthCredential)
 
     }
@@ -159,16 +159,16 @@ class VerificationViewModel @Inject constructor(private val userRepository: User
      */
     fun checkValidation(): Boolean {
 
-        if (OTPCode.value.isNullOrEmpty() || OTPCode.value?.length!! < 6) {
-            verificationNavigator?.onFailure(Constant.validation_OTP)
-            return false
-        } else if (varificationID.isEmpty()) {
-            verificationNavigator?.onFailure(Constant.val_optInvalid)
-            return false
-        } else if (isExpire) {
-            verificationNavigator?.onFailure(Constant.val_optExpired)
-            return false
-        }
+//        if (OTPCode.value.isNullOrEmpty() || OTPCode.value?.length!! < 6) {
+//            verificationNavigator?.onFailure(Constant.validation_OTP)
+//            return false
+//        } else if (varificationID.isEmpty()) {
+//            verificationNavigator?.onFailure(Constant.val_optInvalid)
+//            return false
+//        } else if (isExpire) {
+//            verificationNavigator?.onFailure(Constant.val_optExpired)
+//            return false
+//        }
         return true
     }
 

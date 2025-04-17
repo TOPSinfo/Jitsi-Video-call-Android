@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 35
+    namespace "com.app.demo"
 
     defaultConfig {
         applicationId "com.app.demo"
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdkVersion 26
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
 
@@ -42,20 +42,20 @@ android {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'//design dp in all screen
+    implementation 'com.intuit.sdp:sdp-android:1.1.1'//design dp in all screen
     implementation 'com.intuit.ssp:ssp-android:1.0.6' //for text view size
 
     //Coroutine
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0"
 
     //Dagger
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
@@ -72,9 +72,10 @@ dependencies {
 
     // Firebase Authentication and Cloud Firestore
    // implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.firebase:firebase-auth:21.0.1'
-    implementation 'com.google.firebase:firebase-firestore:23.0.4'
-    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    implementation platform('com.google.firebase:firebase-bom:32.8.1')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-storage'
 
     //Country code dropdown
     implementation 'com.github.joielechong:countrycodepicker:2.4.2'
@@ -90,5 +91,8 @@ dependencies {
     }
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
     // Jitsi Meet
-    implementation ('org.jitsi.react:jitsi-meet-sdk:3.10.2') { transitive = true }
+    implementation ('org.jitsi.react:jitsi-meet-sdk:11.1.0') {
+        exclude group: 'com.google.android.exoplayer'
+        transitive = true
+    }
 }

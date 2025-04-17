@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.app.demo">
+   >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>-->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -23,12 +24,13 @@
         android:theme="@style/Theme.SampleDemo">
         <activity
             android:name=".ui.authentication.profile.activity.EditProfileActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.jitsiCall.activity.JitsiCallActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:exported="true"
             android:name=".ui.splash.activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>

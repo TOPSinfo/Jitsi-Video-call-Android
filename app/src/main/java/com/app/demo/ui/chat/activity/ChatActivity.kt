@@ -5,12 +5,20 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.TextUtils
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia.Companion.isPhotoPickerAvailable
 import androidx.activity.viewModels
+import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.demo.R
 import com.app.demo.core.BaseActivity
@@ -26,6 +34,7 @@ import com.app.demo.ui.jitsiCall.activity.JitsiCallActivity
 import com.app.demo.utils.Constant
 import com.app.demo.utils.Utility
 import com.app.demo.utils.toast
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.common.reflect.TypeToken
 import com.google.firebase.Timestamp
@@ -391,34 +400,53 @@ class ChatActivity : BaseActivity() {
      * Check camera and read write permission and open camera and image picker
      */
     private fun pickImage() {
-        TedPermission.with(this@ChatActivity)
-            .setPermissionListener(object : PermissionListener {
-                override fun onPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            TedPermission.with(this)
+                .setPermissionListener(object : PermissionListener {
+                    override fun onPermissionGranted() {
+                        showChooseFileDialog()
+                    }
 
-                    FilePickerBuilder.instance
-                        .setMaxCount(1)
-                        .setActivityTheme(R.style.FilePickerTheme)
-                        .setActivityTitle("Please select image")
-                        .enableVideoPicker(true)
-                        .enableCameraSupport(true)
-                        .showGifs(false)
-                        .showFolderView(true)
-                        .enableSelectAll(false)
-                        .enableImagePicker(true)
-                        .setCameraPlaceholder(R.drawable.ic_camera)
-                        .withOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-                        .pickPhoto(this@ChatActivity, 100)
-                }
+                    override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                    }
 
-                override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
-                }
+                }).setDeniedMessage(getString(R.string.permission_denied))
+                .setPermissions(
+                    Manifest.permission.CAMERA
+                )
+                .check()
 
-            }).setDeniedMessage(getString(R.string.permission_denied))
-            .setPermissions(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA
-            )
-            .check()
+        }else {
+            TedPermission.with(this)
+                .setPermissionListener(object : PermissionListener {
+                    override fun onPermissionGranted() {
+                        showChooseFileDialog()
+//                    FilePickerBuilder.instance
+//                        .setMaxCount(1)
+//                        .setActivityTheme(R.style.FilePickerTheme)
+//                        .setActivityTitle("Please select image")
+//                        .enableVideoPicker(false)
+//                        .enableCameraSupport(true)
+//                        .showGifs(false)
+//                        .showFolderView(true)
+//                        .enableSelectAll(false)
+//                        .enableImagePicker(true)
+//                        .setCameraPlaceholder(R.drawable.ic_camera_profile)
+//                        .withOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+//                        .pickPhoto(this@EditProfileActivity, 100)
+                    }
+
+                    override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                    }
+
+                }).setDeniedMessage(getString(R.string.permission_denied))
+                .setPermissions(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+                )
+                .check()
+        }
     }
 
     /**
@@ -623,4 +651,117 @@ class ChatActivity : BaseActivity() {
         )
 
     }
+
+    private fun showChooseFileDialog() {
+        val dialogBuilder =
+            MaterialAlertDialogBuilder(this)
+
+        val customView =
+            LayoutInflater.from(this)
+                .inflate(R.layout.dialog_select_file, null)
+
+        val dialog = dialogBuilder.setView(customView).show()
+        val tvTakePhoto = customView.findViewById(R.id.tvTakePhoto) as TextView
+        val tvChooseFromLibrary = customView.findViewById(R.id.tvChooseFromLibrary) as TextView
+        val tvCancel = customView.findViewById(R.id.tvCancel) as TextView
+
+        tvTakePhoto.setOnClickListener {
+            dialog.dismiss()
+            openCamera()
+        }
+
+        tvChooseFromLibrary.setOnClickListener {
+            dialog.dismiss()
+            fileChooser()
+        }
+
+        tvCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+
+    private fun openCamera() {
+        val f = File("${getExternalFilesDir(null)}/${"smscode.png"}")
+
+        val outUri: Uri
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            // only for gingerbread and newer versions
+            outUri = FileProvider.getUriForFile(
+                this,
+                "$packageName.provider",
+                f
+            )
+        } else {
+            outUri = Uri.fromFile(f)
+        }
+
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outUri)
+        resultCameraLauncher.launch(cameraIntent)
+    }
+
+
+    private var resultCameraLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                var f = File(getExternalFilesDir(null)!!.path)
+                for (temp in f.listFiles()!!) {
+                    if (temp.name == "smscode.png") {
+                        f = temp
+                        break
+                    }
+                }
+                if (!f.exists()) {
+                    return@registerForActivityResult
+                }
+                try {
+                    val selectedImage = Uri.fromFile(f)
+                    openCropper(selectedImage)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+    private val pickMedia =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { selectedImage ->
+            if (selectedImage != null) {
+                openCropper(selectedImage)
+                Log.d("PhotoPicker", "Selected URI: $selectedImage")
+            } else {
+                Log.d("PhotoPicker", "No media selected")
+            }
+        }
+
+    private fun fileChooser() {
+        if (isPhotoPickerAvailable(this)) {
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        } else {
+            Intent(Intent.ACTION_PICK).also {
+                it.action = Intent.ACTION_OPEN_DOCUMENT
+                it.addCategory(Intent.CATEGORY_OPENABLE)
+                it.type = "image/*"
+                resultChooseFileLauncher.launch(it)
+            }
+        }
+
+    }
+
+
+    private var resultChooseFileLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                data.let {
+                    if (it != null) {
+                        val selectedImage = it.data
+                        openCropper(selectedImage!!)
+//                        CropImage.activity(selectedImage).setAspectRatio(1, 1)
+//                            .start(requireActivity())
+                    }
+                }
+            }
+        }
+
 }
